@@ -26,7 +26,7 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch("https://formsubmit.co/ajax/radunarcis123@gmail.com", {
+            const response = await fetch("https://formsubmit.co/ajax/akm.securitis@yahoo.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -34,6 +34,8 @@ const Contact = () => {
                 },
                 body: JSON.stringify({
                     _subject: "Mesaj Nou - AKM SERV Website",
+                    _captcha: "false",
+                    _template: "table",
                     ...formData
                 })
             });
