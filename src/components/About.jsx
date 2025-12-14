@@ -9,7 +9,7 @@ const About = () => {
                 <div className="about-image">
                     <img src={aboutImage} alt="Echipa AKM Security" width="1024" height="1024" loading="lazy" />
                     <div className="experience-badge">
-                        <span className="years">10+</span>
+                        <span className="years">20+</span>
                         <span className="text">Ani de<br />Experiență</span>
                     </div>
                 </div>
