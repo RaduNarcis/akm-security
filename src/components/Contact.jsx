@@ -153,10 +153,11 @@ const Contact = ({ hasConsent }) => {
                                             onChange={(val) => setFormData(prev => ({ ...prev, service: val }))}
                                             placeholder="Selectați Serviciul Dorit"
                                             options={[
-                                                { value: "paza", label: "Pază Umană" },
-                                                { value: "monitorizare", label: "Monitorizare Video" },
-                                                { value: "interventie", label: "Intervenție Rapidă" },
-                                                { value: "evenimente", label: "Securitate Evenimente" }
+                                                { value: "paza", label: "Pază umană" },
+                                                { value: "alarmare", label: "Monitorizare sisteme alarmare" },
+                                                { value: "monitorizare", label: "Monitorizare video" },
+                                                { value: "interventie", label: "Intervenție rapidă" },
+                                                { value: "evenimente", label: "Securitate evenimente" }
                                             ]}
                                             disabled={!hasConsent}
                                         />
@@ -164,7 +165,7 @@ const Contact = ({ hasConsent }) => {
                                     <div className="form-group">
                                         <textarea
                                             name="message"
-                                            placeholder="Mesajul Dumneavoastră"
+                                            placeholder="Mesajul dumneavoastră"
                                             rows="5"
                                             value={formData.message}
                                             onChange={handleChange}
