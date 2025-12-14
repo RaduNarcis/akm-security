@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CustomSelect.css';
 
-const CustomSelect = ({ options, value, onChange, placeholder }) => {
+const CustomSelect = ({ options, value, onChange, placeholder, disabled }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef(null);
+    const selectRef = useRef(null);
+
+    const handleToggle = () => {
+        if (!disabled) {
+            setIsOpen(!isOpen);
+        }
+    };
 
     const handleSelect = (optionValue) => {
         onChange(optionValue);
@@ -14,7 +20,7 @@ const CustomSelect = ({ options, value, onChange, placeholder }) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            if (selectRef.current && !selectRef.current.contains(event.target)) {
                 setIsOpen(false);
             }
         };
@@ -26,10 +32,10 @@ const CustomSelect = ({ options, value, onChange, placeholder }) => {
     }, []);
 
     return (
-        <div className="custom-select-container" ref={dropdownRef}>
+        <div className="custom-select-container" ref={selectRef}>
             <div
-                className={`custom-select-trigger ${isOpen ? 'open' : ''}`}
-                onClick={() => setIsOpen(!isOpen)}
+                className={`custom-select-trigger ${isOpen ? 'open' : ''} ${disabled ? 'disabled' : ''}`}
+                onClick={handleToggle}
             >
                 <span>{selectedLabel}</span>
                 <div className="arrow"></div>

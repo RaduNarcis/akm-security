@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CustomSelect from './CustomSelect';
 import './Contact.css';
 
-const Contact = () => {
+const Contact = ({ hasConsent }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -105,64 +105,78 @@ const Contact = () => {
                                 <button className="btn btn-outline-dark" onClick={() => setIsSubmitted(false)}>Trimite alt mesaj</button>
                             </div>
                         ) : (
-                            <form className="contact-form" onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Numele Dumneavoastră"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        placeholder="Adresa de Email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        placeholder="Număr de Telefon"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <CustomSelect
-                                        value={formData.service}
-                                        onChange={(val) => setFormData(prev => ({ ...prev, service: val }))}
-                                        placeholder="Selectați Serviciul Dorit"
-                                        options={[
-                                            { value: "paza", label: "Pază Umană" },
-                                            { value: "monitorizare", label: "Monitorizare Video" },
-                                            { value: "interventie", label: "Intervenție Rapidă" },
-                                            { value: "evenimente", label: "Securitate Evenimente" }
-                                        ]}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <textarea
-                                        name="message"
-                                        placeholder="Mesajul Dumneavoastră"
-                                        rows="5"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
-                                    ></textarea>
-                                </div>
-                                <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={isSubmitting}>
-                                    {isSubmitting ? 'Se trimite...' : 'Trimite Mesaj'}
-                                </button>
-                            </form>
+                            <div className="form-container-relative" style={{ position: 'relative' }}>
+                                {!hasConsent && (
+                                    <div className="consent-overlay">
+                                        <div className="consent-message">
+                                            <p>⚠️ Pentru a ne contacta, este necesar să acceptați utilizarea modulelor cookie.</p>
+                                        </div>
+                                    </div>
+                                )}
+                                <form className={`contact-form ${!hasConsent ? 'disabled-form' : ''}`} onSubmit={handleSubmit}>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            placeholder="Numele Dumneavoastră"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={!hasConsent}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder="Adresa de Email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={!hasConsent}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            placeholder="Număr de Telefon"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={!hasConsent}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <CustomSelect
+                                            value={formData.service}
+                                            onChange={(val) => setFormData(prev => ({ ...prev, service: val }))}
+                                            placeholder="Selectați Serviciul Dorit"
+                                            options={[
+                                                { value: "paza", label: "Pază Umană" },
+                                                { value: "monitorizare", label: "Monitorizare Video" },
+                                                { value: "interventie", label: "Intervenție Rapidă" },
+                                                { value: "evenimente", label: "Securitate Evenimente" }
+                                            ]}
+                                            disabled={!hasConsent}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <textarea
+                                            name="message"
+                                            placeholder="Mesajul Dumneavoastră"
+                                            rows="5"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={!hasConsent}
+                                        ></textarea>
+                                    </div>
+                                    <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={isSubmitting || !hasConsent}>
+                                        {isSubmitting ? 'Se trimite...' : 'Trimite Mesaj'}
+                                    </button>
+                                </form>
+                            </div>
                         )}
                     </div>
                 </div>
