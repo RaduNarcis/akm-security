@@ -6,10 +6,14 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CookieConsent from './components/CookieConsent'
+import InfoModal from './components/InfoModal'
+import { privacyTitle, privacyText } from './components/PrivacyContent'
+import { termsTitle, termsText } from './components/TermsContent'
 import './App.css'
 
 function App() {
   const [hasConsent, setHasConsent] = useState(false);
+  const [activeModal, setActiveModal] = useState(null); // 'privacy', 'terms', or null
 
   useEffect(() => {
     const consent = localStorage.getItem('cookieConsent');
@@ -22,6 +26,14 @@ function App() {
     setHasConsent(true);
   };
 
+  const getModalContent = () => {
+    if (activeModal === 'privacy') return { title: privacyTitle, content: privacyText };
+    if (activeModal === 'terms') return { title: termsTitle, content: termsText };
+    return { title: '', content: '' };
+  };
+
+  const { title, content } = getModalContent();
+
   return (
     <div className="app">
       <Header />
@@ -31,8 +43,20 @@ function App() {
         <About />
         <Contact hasConsent={hasConsent} />
       </main>
-      <Footer />
-      <CookieConsent onAccept={handleConsentAccept} />
+      <Footer
+        onOpenPrivacy={() => setActiveModal('privacy')}
+        onOpenTerms={() => setActiveModal('terms')}
+      />
+      <CookieConsent
+        onAccept={handleConsentAccept}
+        onOpenPrivacy={() => setActiveModal('privacy')}
+      />
+      <InfoModal
+        isOpen={!!activeModal}
+        onClose={() => setActiveModal(null)}
+        title={title}
+        content={content}
+      />
     </div>
   )
 }

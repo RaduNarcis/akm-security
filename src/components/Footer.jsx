@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../assets/logo.webp';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ onOpenPrivacy, onOpenTerms }) => {
     return (
         <footer className="footer">
             <div className="container footer-content">
@@ -22,8 +22,15 @@ const Footer = () => {
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div className="footer-legal">
-                    <p>&copy; {new Date().getFullYear()} AKM SERV PRIVAT SECURITY SRL. Toate drepturile rezervate.</p>
+                <div className="footer-bottom">
+                    <p>&copy; 2025 AKM SERV <span>PRIVAT</span> SECURITY SRL. Toate drepturile rezervate.</p>
+                    <div className="footer-legal">
+                        <button onClick={onOpenPrivacy}>Politica de confidențialitate</button>
+                        <span className="separator">|</span>
+                        <button onClick={onOpenTerms}>Termeni și condiții</button>
+                        <span className="separator">|</span>
+                        <a href="https://anpc.ro/" target="_blank" rel="noopener noreferrer">Protecția consumatorului</a>
+                    </div>
                 </div>
             </div>
         </footer>

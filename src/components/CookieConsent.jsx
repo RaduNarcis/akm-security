@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './CookieConsent.css';
-import PrivacyModal from './PrivacyModal';
 
-const CookieConsent = ({ onAccept }) => {
+const CookieConsent = ({ onAccept, onOpenPrivacy }) => {
     const [showBanner, setShowBanner] = useState(false);
-    const [showPrivacy, setShowPrivacy] = useState(false);
 
     useEffect(() => {
         const consent = localStorage.getItem('cookieConsent');
@@ -23,26 +21,23 @@ const CookieConsent = ({ onAccept }) => {
     if (!showBanner) return null;
 
     return (
-        <>
-            <div className={`cookie-consent ${showBanner ? 'show' : ''}`}>
-                <div className="cookie-content">
-                    <h3>Acest site folosește cookies</h3>
-                    <p>
-                        Folosim module cookie pentru a vă îmbunătăți experiența de navigare.
-                        Prin utilizarea site-ului sunteți de acord cu folosirea lor.
-                    </p>
-                    <div className="cookie-buttons">
-                        <button className="cookie-btn-accept" onClick={handleAccept}>
-                            Am înțeles !
-                        </button>
-                        <button className="cookie-btn-info" onClick={() => setShowPrivacy(true)}>
-                            Aici poți afla mai multe despre cookies
-                        </button>
-                    </div>
+        <div className={`cookie-consent ${showBanner ? 'show' : ''}`}>
+            <div className="cookie-content">
+                <h3>Acest site folosește cookies</h3>
+                <p>
+                    Folosim module cookie pentru a vă îmbunătăți experiența de navigare.
+                    Prin utilizarea site-ului sunteți de acord cu folosirea lor.
+                </p>
+                <div className="cookie-buttons">
+                    <button className="cookie-btn-accept" onClick={handleAccept}>
+                        Am înțeles !
+                    </button>
+                    <button className="cookie-btn-info" onClick={onOpenPrivacy}>
+                        Aici poți afla mai multe despre cookies
+                    </button>
                 </div>
             </div>
-            <PrivacyModal isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
-        </>
+        </div>
     );
 };
 
