@@ -5,7 +5,6 @@ import partnerBytex from '../assets/partners/bytex.jpg';
 import partnerFrigoglass from '../assets/partners/frigoglass.jpg';
 import partnerKosarom from '../assets/partners/kosarom.jpg';
 import partnerVelPitar from '../assets/partners/LOGO-Vel-Pitar.png';
-import partnerAcademiaIasi from '../assets/partners/Logo-Academia-Romana-Filiala-Iasi.png';
 import partnerTreiBrutari from '../assets/partners/Logo-Trei-Brutari-small.png';
 import partnerAcademia from '../assets/partners/academia_romana.png';
 import partnerMambu from '../assets/partners/mambu-logo-2023.png';
@@ -23,7 +22,6 @@ const Footer = ({ onOpenPrivacy, onOpenTerms }) => {
         { src: partnerFrigoglass, alt: "Frigoglass" },
         { src: partnerKosarom, alt: "Kosarom" },
         { src: partnerVelPitar, alt: "Vel Pitar" },
-        { src: partnerAcademiaIasi, alt: "Academia Romana Iasi" },
         { src: partnerTreiBrutari, alt: "Trei Brutari" },
         { src: partnerAcademia, alt: "Academia Romana" },
         { src: partnerMambu, alt: "Mambu" },
