@@ -5,7 +5,7 @@ Termeni și Condiții
 
 INFORMAȚII GENERALE 
 
-Site-ul akm-security.ro este proprietatea AKM SERV PRIVAT SECURITY SRL, cu sediul în Bdul. Chimiei 12 Et. P Ap. BIR. 2 municipiul Iași, înregistrată la Registrul Comerțului cu nr. J2014000518229, cod unic de înregistrare nr. 32964446 și Capital Social 200 RON, adresă de e-mail akm.securitis@yahoo.com, număr de telefon 0751 294 070, reprezentată prin CRACEA DUMITRU, cu funcția de reprezentant legal. 
+Site-ul akm-security.ro este proprietatea AKM SERV PRIVAT SECURITY SRL, cu sediul în Bdul. Chimiei 12 Et. P Ap. BIR. 2 municipiul Iași, înregistrată la Registrul Comerțului cu nr. J2014000518229, cod unic de înregistrare nr. 32964446 și Capital Social 5.000 RON, adresă de e-mail akm.securitis@yahoo.com, număr de telefon 0751 294 070, reprezentată prin CRACEA DUMITRU, reprezentant legal. 
 
 Site-ul akm-security.ro este o pagina web ce oferta serivici din domeniu pazei si protectiei. 
  
